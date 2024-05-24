@@ -11,14 +11,14 @@ namespace EasyD
         readonly string executableAddress = @"C:\Users\felip\OneDrive\APP\yt-dlp\yt-dlp.exe";
         readonly string parameters = "-f \"bestvideo[height<=1440]+bestaudio/best[height<=1440]\" -o \"D:\\Videos\\Youtube Temp\\%(title)s.%(ext)s\" ";
 
-        public async Task<bool> Download()
+        public async Task<bool> Download(string videoAddress)
         {
             System.Diagnostics.Process process = new System.Diagnostics.Process();
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
 
             //startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             startInfo.FileName = executableAddress;
-            startInfo.Arguments = parameters + $"https://www.youtube.com/watch?v=n-5Q742y8i4";
+            startInfo.Arguments = parameters + videoAddress;
             process.StartInfo = startInfo;
             process.Start();
 
