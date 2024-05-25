@@ -1,4 +1,4 @@
-﻿namespace DynamicDownloadD
+﻿namespace DynamicDownload
 {
     class TestClass
     {
