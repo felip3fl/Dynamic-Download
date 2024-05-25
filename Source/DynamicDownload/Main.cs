@@ -1,4 +1,4 @@
-﻿namespace EasyD
+﻿namespace DynamicDownloadD
 {
     class TestClass
     {
