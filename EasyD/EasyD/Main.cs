@@ -6,10 +6,18 @@
         static void Main(string[] args)
         {
             Ytdlp ytdlp = new Ytdlp();
+            var linkToDownload = "";
 
-            var link = getClipboardText();
+            if (validLinkFromParameters(args))
+            {
+                linkToDownload = getLinkFromParameters(args);
+            }
+            else
+            {
+                linkToDownload = getClipboardText();
+            };
 
-            ytdlp.Download(args.FirstOrDefault());
+            ytdlp.Download(linkToDownload);
         }
 
         public static string getClipboardText()
@@ -20,6 +28,21 @@
                 returnAudioStream = Clipboard.GetText();
             }
             return returnAudioStream;
+        }
+
+        public static string getLinkFromParameters(string[] args)
+        {
+            return args.FirstOrDefault();
+        }
+
+        public static bool validLinkFromParameters(string[] args)
+        {
+            if (args.FirstOrDefault() == null)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 
