@@ -10,7 +10,7 @@ namespace DynamicDownload
     public class Ytdlp
     {
         readonly string executableAddress = @"C:\Users\felip\OneDrive\APP\yt-dlp\yt-dlp.exe";
-        readonly string parameters = "-f \"bestvideo[height<=1440]+bestaudio/best[height<=1440]\" -o \"D:\\Videos\\Youtube Temp\\%(title)s.%(ext)s\" ";
+        readonly string parameters = "--check-formats -f \"bestvideo[height<=1440]+bestaudio/best[height<=1440]\" -o \"D:\\Videos\\Youtube Temp\\%(title)s.%(ext)s\" ";
 
         public async Task<bool> Download(string videoAddress)
         {
