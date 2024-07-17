@@ -9,16 +9,18 @@ namespace DynamicDownload
 {
     public class Ytdlp
     {
-        readonly string executableAddress = @"yt-dlp";
-        readonly string parameters = "--check-formats -f \"bestvideo[height<=1440]+bestaudio/best[height<=1440]\" -o \"D:\\Videos\\Youtube Temp\\%(title)s.%(ext)s\" ";
+        readonly string executableAddress = "yt-dlp";
+        readonly string parameters = "--check-formats -f \"bestvideo[height<=1440]+bestaudio/best[height<=1440]\" -o \"%(title)s.%(ext)s\" ";
 
-        public async Task<bool> Download(string videoAddress)
+        public bool Download(string videoAddress)
         {
+            Console.Clear();
             System.Diagnostics.Process process = new System.Diagnostics.Process();
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
 
             //startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             startInfo.FileName = executableAddress;
+            startInfo.WorkingDirectory = @"D:\Videos\Youtube Temp\";
             startInfo.Arguments = parameters + videoAddress;
             process.StartInfo = startInfo;
             process.Start();
