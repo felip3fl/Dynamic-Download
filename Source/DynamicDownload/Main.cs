@@ -17,7 +17,8 @@
                 linkToDownload = getClipboardText();
             };
 
-            ytdlp.Download(linkToDownload);
+            var urlWithoutParameters = RemoveAdditionalParameters(linkToDownload);
+            ytdlp.Download(urlWithoutParameters);
         }
 
         public static string getClipboardText()
@@ -43,6 +44,18 @@
             }
 
             return true;
+        }
+
+        private static string RemoveAdditionalParameters(string url)
+        {
+            string urlWithNoParameters = "";
+            int index = url.IndexOf("&");
+            if (index >= 0)
+                urlWithNoParameters = url.Substring(0, index);
+            else
+                return url;
+
+            return urlWithNoParameters;
         }
     }
 
