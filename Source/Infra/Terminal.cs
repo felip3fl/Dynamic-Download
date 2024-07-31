@@ -24,7 +24,7 @@ namespace Infra
         }
 
 
-        public string Execute()
+        public string DownloadWithErrorMessage()
         {
             var process = new Process();
             ProcessStartInfo startInfo = new ProcessStartInfo();

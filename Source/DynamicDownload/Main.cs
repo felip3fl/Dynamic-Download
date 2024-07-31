@@ -1,11 +1,13 @@
-﻿namespace DynamicDownload
+﻿using Core;
+
+namespace DynamicDownload
 {
     class TestClass
     {
         [STAThread]
         static void Main(string[] args)
         {
-            Ytdlp ytdlp = new Ytdlp();
+            DownloadService ytdlp = new DownloadService();
             var linkToDownload = "";
 
             if (validLinkFromParameters(args))
@@ -18,7 +20,7 @@
             };
 
             var urlWithoutParameters = RemoveAdditionalParameters(linkToDownload);
-            var oi = ytdlp.Execute();
+            var oi = ytdlp.Download(urlWithoutParameters);
             Console.WriteLine(oi);
         }
 
