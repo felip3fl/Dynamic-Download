@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Diagnostics;
 
-namespace DynamicDownload
+namespace Infra
 {
-    public class Ytdlp
+    public class Terminal
     {
         readonly string executableAddress = "yt-dlp";
         readonly string parameters = "--check-formats -f \"bestvideo[height<=1440]+bestaudio/best[height<=1440]\" -o \"%(title)s.%(ext)s\" ";
@@ -48,6 +42,5 @@ namespace DynamicDownload
 
             return errors;
         }
-
     }
 }
