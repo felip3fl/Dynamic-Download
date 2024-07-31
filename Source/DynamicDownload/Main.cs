@@ -18,7 +18,8 @@
             };
 
             var urlWithoutParameters = RemoveAdditionalParameters(linkToDownload);
-            ytdlp.Download(urlWithoutParameters);
+            var oi = ytdlp.Execute();
+            Console.WriteLine(oi);
         }
 
         public static string getClipboardText()

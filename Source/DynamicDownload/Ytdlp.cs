@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,5 +28,26 @@ namespace DynamicDownload
 
             return true;
         }
+
+
+        public string Execute()
+        {
+            var process = new Process();
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+
+            var videoAddress = "https://www.youtube.com/watch?v=0TZ1krFdzoQ";
+
+            //startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.FileName = executableAddress;
+            startInfo.WorkingDirectory = @"D:\Videos\Youtube Temp\";
+            startInfo.Arguments = parameters + videoAddress;
+            startInfo.RedirectStandardError = true;
+            process.StartInfo = startInfo;
+            Process someProcess = Process.Start(startInfo);
+            string errors = someProcess.StandardError.ReadToEnd();
+
+            return errors;
+        }
+
     }
 }
