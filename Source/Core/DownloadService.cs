@@ -4,11 +4,11 @@ namespace Core
 {
     public class DownloadService
     {
+        Terminal terminal = new Terminal();
+
         public string Download(string url)
         {
-            Terminal terminal = new Terminal();
-
-            //var urlWithoutParameters = RemoveAdditionalParameters(linkToDownload);
+            var urlWithoutParameters = RemoveAdditionalParameters(url);
 
             return terminal.DownloadWithErrorMessage();
         }

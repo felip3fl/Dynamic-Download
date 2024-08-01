@@ -31,7 +31,6 @@ namespace Infra
 
             var videoAddress = "https://www.youtube.com/watch?v=0TZ1krFdzoQ";
 
-            //startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             startInfo.FileName = executableAddress;
             startInfo.WorkingDirectory = @"D:\Videos\Youtube Temp\";
             startInfo.Arguments = parameters + videoAddress;
