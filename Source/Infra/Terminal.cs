@@ -14,10 +14,10 @@ namespace Infra
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
 
             //startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-            startInfo.FileName = executableAddress;
+            startInfo.FileName         = executableAddress;
             startInfo.WorkingDirectory = @"D:\Videos\Youtube Temp\";
-            startInfo.Arguments = parameters + videoAddress;
-            process.StartInfo = startInfo;
+            startInfo.Arguments        = parameters + videoAddress;
+            process.StartInfo          = startInfo;
             process.Start();
 
             return true;
@@ -31,13 +31,13 @@ namespace Infra
 
             var videoAddress = "https://www.youtube.com/watch?v=0TZ1krFdzoQ";
 
-            startInfo.FileName = executableAddress;
-            startInfo.WorkingDirectory = @"D:\Videos\Youtube Temp\";
-            startInfo.Arguments = parameters + videoAddress;
+            startInfo.FileName              = executableAddress;
+            startInfo.WorkingDirectory      = @"D:\Videos\Youtube Temp\";
+            startInfo.Arguments             = parameters + videoAddress;
             startInfo.RedirectStandardError = true;
-            process.StartInfo = startInfo;
-            Process someProcess = Process.Start(startInfo);
-            string errors = someProcess.StandardError.ReadToEnd();
+            process.StartInfo               = startInfo;
+            Process someProcess             = Process.Start(startInfo);
+            string errors                   = someProcess.StandardError.ReadToEnd();
 
             return errors;
         }
