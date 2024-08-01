@@ -10,7 +10,7 @@ namespace DynamicDownload
             var downloadService = new DownloadService();
 
             var linkToDownload = getLinkFromParameters(args);
-            
+
             if (linkToDownload == null)
                 linkToDownload = getClipboardText();
 

@@ -1,4 +1,5 @@
 ﻿using Infra;
+using System.Text.RegularExpressions;
 
 namespace Core
 {
@@ -10,7 +11,21 @@ namespace Core
         {
             var urlWithoutParameters = RemoveAdditionalParameters(url);
 
-            return terminal.DownloadWithErrorMessage();
+            var result = terminal.DownloadWithErrorMessage();
+            checkReturn(result);
+
+            return result;
+        }
+
+        private void checkReturn(string message)
+        {
+            message = "This live event will begin in 11 days";
+
+            if (!message.Contains("This live event will"))
+                return;
+
+            var days = Regex.Match(message, @"\d+").Value;
+
         }
 
         private string RemoveAdditionalParameters(string url)
