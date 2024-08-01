@@ -7,24 +7,18 @@ namespace DynamicDownload
         [STAThread]
         static void Main(string[] args)
         {
-            DownloadService ytdlp = new DownloadService();
-            var linkToDownload = "";
+            var downloadService = new DownloadService();
 
-            if (validLinkFromParameters(args))
-            {
-                linkToDownload = getLinkFromParameters(args);
-            }
-            else
-            {
+            var linkToDownload = getLinkFromParameters(args);
+            
+            if (linkToDownload == null)
                 linkToDownload = getClipboardText();
-            };
 
-            var urlWithoutParameters = RemoveAdditionalParameters(linkToDownload);
-            var oi = ytdlp.Download(urlWithoutParameters);
-            Console.WriteLine(oi);
+            var resultMessage = downloadService.Download(linkToDownload);
+            Console.WriteLine(resultMessage);
         }
 
-        public static string getClipboardText()
+        private static string getClipboardText()
         {
             string returnAudioStream = null;
             if (Clipboard.ContainsText())
@@ -34,12 +28,12 @@ namespace DynamicDownload
             return returnAudioStream;
         }
 
-        public static string getLinkFromParameters(string[] args)
+        private static string getLinkFromParameters(string[] args)
         {
             return args.FirstOrDefault();
         }
 
-        public static bool validLinkFromParameters(string[] args)
+        private static bool validLinkFromParameters(string[] args)
         {
             if (args.FirstOrDefault() == null)
             {
@@ -47,18 +41,6 @@ namespace DynamicDownload
             }
 
             return true;
-        }
-
-        private static string RemoveAdditionalParameters(string url)
-        {
-            string urlWithNoParameters = "";
-            int index = url.IndexOf("&");
-            if (index >= 0)
-                urlWithNoParameters = url.Substring(0, index);
-            else
-                return url;
-
-            return urlWithNoParameters;
         }
     }
 
