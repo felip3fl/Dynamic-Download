@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Text;
 
 namespace Infra
 {
@@ -26,20 +27,24 @@ namespace Infra
 
         public string DownloadWithErrorMessage()
         {
-            var process = new Process();
+            var process                = new Process();
+            var messages               = new StringBuilder();
             ProcessStartInfo startInfo = new ProcessStartInfo();
 
             var videoAddress = "https://www.youtube.com/watch?v=0TZ1krFdzoQ";
 
-            startInfo.FileName              = executableAddress;
-            startInfo.WorkingDirectory      = @"D:\Videos\Youtube Temp\";
-            startInfo.Arguments             = parameters + videoAddress;
-            startInfo.RedirectStandardError = true;
-            process.StartInfo               = startInfo;
-            Process someProcess             = Process.Start(startInfo);
-            string errors                   = someProcess.StandardError.ReadToEnd();
+            startInfo.FileName               = executableAddress;
+            startInfo.WorkingDirectory       = @"D:\Videos\Youtube Temp\";
+            startInfo.Arguments              = parameters + videoAddress;
+            startInfo.RedirectStandardError  = true;
+            startInfo.RedirectStandardOutput = true;
+            process.StartInfo                = startInfo;
+            Process someProcess              = Process.Start(startInfo);
 
-            return errors;
+            messages.Append(someProcess.StandardOutput.ReadToEnd());
+            messages.Append(someProcess.StandardError.ReadToEnd());
+
+            return messages.ToString();
         }
     }
 }
