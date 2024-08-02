@@ -2,7 +2,7 @@
 
 namespace DynamicDownload
 {
-    class TestClass
+    public class TestClass
     {
         [STAThread]
         static void Main(string[] args)
