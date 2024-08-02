@@ -1,4 +1,6 @@
-﻿using Infra;
+﻿using Core.Model;
+using File;
+using Infra;
 using System.Text.RegularExpressions;
 
 namespace Core
@@ -9,15 +11,23 @@ namespace Core
 
         public string Download(string url)
         {
-            var urlWithoutParameters = RemoveAdditionalParameters(url);
+            var video = new Video();
 
-            var result = terminal.DownloadWithErrorMessage();
-            checkReturn(result);
+            video.Url = RemoveAdditionalParameters(url); 
 
-            return result;
+            var consoleMessage = terminal.DownloadWithErrorMessage();
+            var listOfMessages = ConvertMessageToList(consoleMessage);
+
+            return consoleMessage.ToString();
         }
 
-        private void checkReturn(string message)
+        public List<string> ConvertMessageToList(string messages)
+        {
+            var listOfMessages = messages.Split("\n").ToList();
+            return listOfMessages;
+        }
+
+        private void CheckReturn(string message)
         {
             message = "This live event will begin in 11 days";
 
