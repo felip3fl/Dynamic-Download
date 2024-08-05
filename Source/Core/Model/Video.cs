@@ -4,6 +4,6 @@ namespace Core.Model
     {
         public string Name { get; set; }
         public string Url { get; set; }
-        public string RealizeDate { get; set; }
+        public DateTime RealizeDate { get; set; }
     }
 }
