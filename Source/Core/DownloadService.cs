@@ -17,6 +17,7 @@ namespace Core
 
             var consoleMessage = terminal.DownloadWithErrorMessage();
             var listOfMessages = ConvertMessageToList(consoleMessage);
+            video.RealizeDate = CheckReturn("");
 
             return consoleMessage.ToString();
         }
@@ -27,15 +28,18 @@ namespace Core
             return listOfMessages;
         }
 
-        private void CheckReturn(string message)
+        private DateTime CheckReturn(string message)
         {
             message = "This live event will begin in 11 days";
 
             if (!message.Contains("This live event will"))
-                return;
+                return default;
 
-            var days = Regex.Match(message, @"\d+").Value;
+            var dateNow = DateTime.Now;
+            var daysRemaining = Convert.ToInt16(Regex.Match(message, @"\d+").Value);
+            var dateRealize = dateNow.AddDays(daysRemaining);
 
+            return dateRealize;
         }
 
         private string RemoveAdditionalParameters(string url)
