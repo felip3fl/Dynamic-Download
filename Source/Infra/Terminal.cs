@@ -6,7 +6,7 @@ namespace Infra
     public class Terminal
     {
         readonly string executableAddress = "yt-dlp";
-        readonly string parameters = "--check-formats -f \"bestvideo[height<=1440]+bestaudio/best[height<=1440]\" -o \"%(title)s.%(ext)s\" ";
+        readonly string parameters = "--check-formats -f \"bestvideo[height<=1440]+bestaudio/best[height<=1440]\" -o \"%(channel)s - %(title)s.%(ext)s\" --write-subs --add-metadata";
 
         public bool Download(string videoAddress)
         {
@@ -17,7 +17,7 @@ namespace Infra
             //startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             startInfo.FileName         = executableAddress;
             startInfo.WorkingDirectory = @"D:\Videos\Youtube Temp\";
-            startInfo.Arguments        = parameters + videoAddress;
+            startInfo.Arguments        = parameters + " " + videoAddress;
             process.StartInfo          = startInfo;
             process.Start();
 
