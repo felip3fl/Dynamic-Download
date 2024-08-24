@@ -15,9 +15,9 @@ namespace Core
 
             video.Url = RemoveAdditionalParameters(url); 
 
-            var consoleMessage = terminal.DownloadWithErrorMessage();
-            var listOfMessages = ConvertMessageToList(consoleMessage);
-            video.RealizeDate = CheckReturn("");
+            var consoleMessage = terminal.Download(video.Url);
+            //var listOfMessages = ConvertMessageToList(consoleMessage);
+            //video.RealizeDate = CheckReturn("");
 
             return consoleMessage.ToString();
         }
