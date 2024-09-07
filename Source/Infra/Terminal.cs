@@ -25,7 +25,7 @@ namespace Infra
         }
 
 
-        public string DownloadWithErrorMessage()
+        public string DownloadWithConsole()
         {
             var process                = new Process();
             var messages               = new StringBuilder();
