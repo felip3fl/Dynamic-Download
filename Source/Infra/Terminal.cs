@@ -25,13 +25,16 @@ namespace Infra
         }
 
 
-        public string DownloadWithConsole()
+        public string DownloadWithConsole(string videoAddress)
         {
             var process                = new Process();
             var messages               = new StringBuilder();
             ProcessStartInfo startInfo = new ProcessStartInfo();
 
-            var videoAddress = "https://www.youtube.com/watch?v=0TZ1krFdzoQ";
+            if (videoAddress == "")
+            {
+                videoAddress = "https://www.youtube.com/watch?v=0TZ1krFdzoQ";    
+            }
 
             startInfo.FileName               = executableAddress;
             startInfo.WorkingDirectory       = @"D:\Videos\Youtube Temp\";
