@@ -6,7 +6,7 @@ namespace Infra
     public class Terminal
     {
         readonly string executableAddress = "yt-dlp";
-        readonly string parameters = "--check-formats -f \"bestvideo[height<=1440]+bestaudio/best[height<=1440]\" -o \"%(channel)s - %(title)s.%(ext)s\" --all-subs --embed-subs --add-metadata";
+        readonly string parameters = "--check-formats -f \"bestvideo[height<=1440]+ba[format_note*=original]\" -o \"%(channel)s - %(title)s.%(ext)s\" --all-subs --embed-subs --add-metadata";
 
         public bool Download(string videoAddress)
         {
