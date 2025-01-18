@@ -6,8 +6,14 @@
 	<Nullable>enable</Nullable>
 	<UseWindowsForms>true</UseWindowsForms>
 	<ImplicitUsings>enable</ImplicitUsings>
-	<Version>1.25.01.17</Version>
+	<Version>1.25.01.18</Version>
+	<AssemblyName>dd</AssemblyName>
+	<ApplicationIcon>Material\Icon\fl-android-chrome-256x256.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Material\Icon\fl-android-chrome-256x256.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
