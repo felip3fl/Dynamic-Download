@@ -9,6 +9,7 @@ namespace DynamicDownload
         static void Main(string[] args)
         {
             PrintBrandAndVerison();
+            SetTerminalTitle("FL Dynamic Download");
             var downloadService = new DownloadService();
 
             var linkToDownload = getLinkFromParameters(args);
@@ -74,6 +75,12 @@ namespace DynamicDownload
             var version = Assembly.GetExecutingAssembly().GetName().Version;
             return version.ToString();
         }
+
+        private static void SetTerminalTitle(string title)
+        {
+            Console.Title = title;
+        }
+
     }
 
 
