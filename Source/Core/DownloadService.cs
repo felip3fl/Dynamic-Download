@@ -30,16 +30,40 @@ namespace Core
 
         private DateTime CheckReturn(string message)
         {
-            message = "This live event will begin in 11 days";
+            //message = "This live event will begin in 11 days";
+            //message = "ERROR: [youtube] 2Ylc0_g3AKU: Premieres in 52 minutes"
 
-            if (!message.Contains("This live event will"))
+            if (!message.Contains("Premieres in"))
                 return default;
 
-            var dateNow = DateTime.Now;
-            var daysRemaining = Convert.ToInt16(Regex.Match(message, @"\d+").Value);
-            var dateRealize = dateNow.AddDays(daysRemaining);
+            //if (!message.Contains("This live event will"))
+            //    return default;
 
-            return dateRealize;
+            var futureDate = DateTime.Now;
+            var daysRemaining = Regex.Match(message, @"\d+ (minute|day|mounth|hour|second)").Value;
+
+            var values = daysRemaining.Split(" ");
+            switch (values[1])
+            {
+                case "minute":
+                    futureDate = futureDate.AddMinutes(int.Parse(values[0]));
+                    break;
+                case "hour":
+                    futureDate = futureDate.AddHours(int.Parse(values[0]));
+                    break;
+                case "day":
+                    futureDate = futureDate.AddDays(int.Parse(values[0]));
+                    break;
+                case "mounth":
+                    futureDate = futureDate.AddMonths(int.Parse(values[0]));
+                    break;
+                default:
+                    break;
+            }
+
+            //var dateRealize = dateNow.AddDays(1);
+
+            return futureDate.AddHours(2);
         }
 
         private string RemoveAdditionalParameters(string url)
