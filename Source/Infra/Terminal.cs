@@ -37,7 +37,7 @@ namespace Infra
             Console.ResetColor();
         }
 
-        public string DownloadWithConsole(string videoAddress)
+        public string CheckVideoDetails(string videoAddress)
         {
             var process   = new Process();
             var messages  = new StringBuilder();
@@ -50,13 +50,13 @@ namespace Infra
 
             startInfo.FileName               = executableAddress;
             startInfo.WorkingDirectory       = @"D:\Videos\Youtube Temp\";
-            startInfo.Arguments              = parameters + " " + videoAddress;
+            startInfo.Arguments              = "-F " + videoAddress;
             startInfo.RedirectStandardError  = true;
-            startInfo.RedirectStandardOutput = true;
+            //startInfo.RedirectStandardOutput = true;
             process.StartInfo                = startInfo;
             Process someProcess              = Process.Start(startInfo);
 
-            messages.Append(someProcess.StandardOutput.ReadToEnd());
+            //messages.Append(someProcess.StandardOutput.ReadToEnd());
             messages.Append(someProcess.StandardError.ReadToEnd());
 
             return messages.ToString();
