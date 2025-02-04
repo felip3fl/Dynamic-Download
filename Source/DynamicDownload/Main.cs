@@ -18,6 +18,9 @@ namespace DynamicDownload
                 linkToDownload = getClipboardText();
 
             var resultMessage = downloadService.Download(linkToDownload);
+
+            if (resultMessage == false)
+                Console.ReadKey();
         }
 
         private static string getClipboardText()
