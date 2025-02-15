@@ -1,8 +1,7 @@
 {
   "profiles": {
     "DynamicDownload": {
-      "commandName": "Project",
-      "commandLineArgs": "parametrosAqui"
+      "commandName": "Project"
     }
   }
 }
